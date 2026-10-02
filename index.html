@@ -23,7 +23,7 @@
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
   .sec{background:#fff8ef;border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 8px 22px rgba(90,60,30,.15);border-top:8px solid #6f4e37;}
   .sec h2{color:#6f4e37;font-size:1.22em;margin-bottom:12px;}
-  .sec.gold{border-color:#f59e0b;} .sec.mint{border-color:#10b981;} .sec.cocoa{border-color:#8a5a2b;} .sec.berry{border-color:#c2410c;}
+  .sec.gold{border-color:#f59e0b;} .sec.mint{border-color:#10b981;} .sec.cocoa{border-color:#8a5a2b;} .sec.berry{border-color:#c2410c;} .sec.blue{border-color:#2563eb;}
   .audio{background:#f59e0b;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;font-size:.85em;box-shadow:0 2px 4px rgba(0,0,0,.2);vertical-align:middle;}
   .audio:hover{background:#d97706;}
   .en{color:#9a3412;font-weight:bold;}
@@ -33,6 +33,8 @@
   .word .pastw{color:#6f4e37;font-size:.95em;margin-top:3px;}
   .word .pastw b{color:#b45309;}
   .word .tr{color:#6b5542;font-size:.88em;margin-top:3px;}
+  .phr{background:#fdf6ea;border:2px solid #e8cfa3;border-radius:12px;padding:9px 12px;margin:7px 0;}
+  .phr .tr{color:#6b5542;font-size:.85em;margin-top:2px;}
   .postit{background:#fef3c7;border:2px solid #f59e0b;border-radius:8px;padding:12px 14px;margin:12px 0;box-shadow:2px 2px 6px rgba(0,0,0,.1);}
   .postit b{color:#b45309;}
   .warn{background:#fde2e2;border:2px solid #ef4444;border-radius:12px;padding:12px 14px;margin:12px 0;color:#991b1b;}
@@ -43,7 +45,6 @@
   .flashq:hover{border-color:#10b981;}
   .flashq .ans{display:none;margin-top:8px;color:#166534;font-weight:bold;}
   .flashq.open .ans{display:block;animation:fade .3s;}
-  /* diálogos */
   .block{background:#fff8ef;border-radius:18px;padding:16px;margin-bottom:16px;box-shadow:0 6px 18px rgba(90,60,30,.15);border-left:8px solid #10b981;}
   .block.locked{opacity:.45;pointer-events:none;filter:grayscale(.3);}
   .block h3{color:#6f4e37;margin-bottom:10px;}
@@ -60,7 +61,6 @@
   .fb.ok{display:block;background:#dcfce7;color:#166534;}
   .fb.no{display:block;background:#fee2e2;color:#991b1b;}
   .lockmsg{font-size:.85em;color:#b45309;margin-top:6px;font-weight:bold;}
-  /* quiz / simulado */
   .hud{position:sticky;top:58px;z-index:30;background:#fff8ef;border-radius:18px;padding:12px 14px;box-shadow:0 6px 18px rgba(90,60,30,.2);margin-bottom:16px;}
   .barbg{background:#e8cfa3;border-radius:20px;height:18px;overflow:hidden;}
   .bar{height:100%;width:0;background:linear-gradient(90deg,#f59e0b,#10b981);transition:width .4s;border-radius:20px;}
@@ -86,6 +86,7 @@
   .report.on{display:block;}
   .rrow{display:flex;justify-content:space-between;background:#fdf6ea;border:2px solid #e8cfa3;border-radius:12px;padding:10px 12px;margin:7px 0;}
   .rrow b{color:#6f4e37;}
+  .silent{color:#dc2626;text-decoration:line-through;}
   #modal{position:fixed;inset:0;background:rgba(59,42,26,.55);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;}
   #modal .mbox{background:#fff8ef;border-radius:18px;padding:22px;max-width:340px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.4);}
   #modal .mbox p{margin-bottom:16px;color:#3b2a1a;}
@@ -118,18 +119,19 @@
   <div class="panel on" id="tab-inicio">
     <div class="top">
       <h1>☕ Café de Ontem</h1>
-      <p><b>Inglês · 5º ano · Unit 6 — "What did you do?"</b><br>Um cafézinho onde a gente relembra o que fez <b>ontem</b> e na <b>semana passada</b>! 🔊 clique para ouvir em inglês.</p>
+      <p><b>Inglês · 5º ano · Unit 6 — "What did you do?"</b><br>Um cafézinho onde a gente relembra o que fez <b>ontem</b> e na <b>semana passada (last week)</b>! 🔊 clique para ouvir em inglês.</p>
       <p style="margin-top:8px;background:#fef3c7;border-radius:10px;padding:8px;color:#b45309;font-weight:bold;">📅 Prova: terça-feira, 06/10</p>
     </div>
 
     <div class="sec gold">
       <h2>📋 O que vai cair na prova</h2>
       <ul style="list-style:none;line-height:1.9;">
-        <li>⏪ <b>Verbos irregulares no passado</b> (make→made, swim→swam, drink→drank...)</li>
-        <li>📅 <b>Expressões de tempo</b> (yesterday, last week, last weekend...)</li>
-        <li>🥤 <b>Drinks</b> — bebidas em inglês (water, milk, juice, tea, coffee...)</li>
-        <li>🔤 <b>Phonics</b> — os sons <b>dr-</b> e <b>sw-</b></li>
-        <li>❓ <b>Perguntas no passado</b>: <span class="en">Did you ... ?</span> → Yes, I did. / No, I didn't.</li>
+        <li>⏪ <b>Verbos irregulares no passado</b> (make→made, swim→swam, fly→flew...)</li>
+        <li>🚫 <b>Frases negativas</b>: <span class="en">didn't</span> + verbo <b>normal</b> (I didn't draw...)</li>
+        <li>📅 <b>LAST</b> para falar do passado: last week, last month, last year</li>
+        <li>❓ <b>Perguntas</b>: <span class="en">Did you ... ?</span> → Yes, I did. / No, I didn't.</li>
+        <li>🥤 <b>Drinks</b>: tea, coffee, juice, water, hot chocolate, soda (Do you like...?)</li>
+        <li>🔤 <b>Phonics: som WH</b> — o <b>H é mudo</b> (whale, white, where)</li>
       </ul>
     </div>
 
@@ -137,7 +139,7 @@
       <h2>🗺️ Trilha de estudo (siga a ordem!)</h2>
       <ol class="trilha">
         <li><b>☕ Cardápio</b> — aprenda as palavras ouvindo o áudio 🔊</li>
-        <li><b>📖 Conversas no Café</b> — leia os diálogos e complete</li>
+        <li><b>📖 Conversas no Café</b> — leia o texto e os diálogos e complete</li>
         <li><b>🎯 Pedido Rápido</b> — teste o que aprendeu (10 perguntas)</li>
         <li><b>📝 O Grande Pedido</b> — o simulado da prova (25 perguntas)</li>
       </ol>
@@ -145,7 +147,7 @@
     </div>
   </div>
 
-  <!-- ============ CARDÁPIO (Resumo/Vocabulário) ============ -->
+  <!-- ============ CARDÁPIO ============ -->
   <div class="panel" id="tab-vocab">
     <div class="top"><h1>☕ Cardápio do Café</h1><p>Todas as palavras da prova, com áudio. 🔊 clique para <b>ouvir em inglês</b>.</p></div>
 
@@ -153,18 +155,27 @@
       <h2>⏪ Verbos irregulares — present ➜ past</h2>
       <p style="color:#6b5542;margin-bottom:8px;">Estes verbos <b>não ganham -ed</b>. Cada um muda do seu jeito — por isso a gente decora! 🔊 ouça o presente e o passado.</p>
       <div class="grid" id="verbs"></div>
-      <div class="postit">📝 <b>Decore assim:</b> make ➜ <b>made</b>, swim ➜ <b>swam</b>, drink ➜ <b>drank</b>. O passado é a forma que a prova vai pedir!</div>
+      <div class="postit">📝 <b>Do quadro do livro:</b> draw➜drew, make➜made, ride➜rode, sing➜sang, see➜saw, swim➜swam, wear➜wore, write➜wrote.</div>
     </div>
 
-    <div class="sec gold">
-      <h2>📅 Expressões de tempo (passado)</h2>
-      <div class="grid" id="time"></div>
-      <div class="postit">⏰ <b>Dica de ouro:</b> viu uma dessas palavras? O verbo vai para o <b>passado</b>! Ex.: <span class="en">Yesterday I drank juice.</span></div>
+    <div class="sec blue">
+      <h2>💬 Frases do livro (passado)</h2>
+      <div id="phrases"></div>
     </div>
 
     <div class="sec berry">
-      <h2>🥤 Drinks — bebidas</h2>
-      <div class="grid" id="drinks"></div>
+      <h2>🚫 Frases negativas: didn't + verbo normal</h2>
+      <p style="color:#6b5542;margin-bottom:8px;">Na negativa usamos <b>didn't</b> e o verbo <b>volta ao normal</b> (sem passado).</p>
+      <div id="negatives"></div>
+      <div class="warn">⚠️ <b>Pegadinha:</b> fala-se <span class="en">I didn't draw</span> (não "didn't drew"). Depois de <b>didn't</b>, o verbo fica normal!</div>
+    </div>
+
+    <div class="sec gold">
+      <h2>📅 LAST — para falar do passado</h2>
+      <p style="color:#6b5542;margin-bottom:8px;"><span class="en">We use "last" to talk about the past.</span> 🔊 <button class="audio" data-say="We use last to talk about the past">🔊</button></p>
+      <div class="grid" id="lasts"></div>
+      <div id="lastPhrases" style="margin-top:10px;"></div>
+      <div class="postit">⏰ <b>Dica:</b> viu <b>last week / last month / last year</b> ou <b>yesterday</b>? O verbo vai para o <b>passado</b>!</div>
     </div>
 
     <div class="sec mint">
@@ -172,16 +183,22 @@
       <table id="didtable">
         <tr><th>Pergunta</th><th>SIM</th><th>NÃO</th></tr>
       </table>
-      <div class="postit">🧩 <b>Fórmula:</b> <b>Did</b> you + <b>verbo normal</b> (sem passado) + ...? → Yes, I did. / No, I didn't.</div>
-      <div class="warn">⚠️ <b>Pegadinha:</b> depois de <b>Did</b> o verbo volta ao normal! Fala-se <span class="en">Did you go?</span> e <b>NÃO</b> "Did you went?".</div>
+      <div class="postit">🧩 <b>Fórmula:</b> <b>Did</b> you + <b>verbo normal</b> + ...? → Yes, I did. / No, I didn't.</div>
+    </div>
+
+    <div class="sec berry">
+      <h2>🥤 Drinks — bebidas (Lesson 5)</h2>
+      <div class="grid" id="drinks"></div>
+      <div class="postit">💬 <b>Do you like coffee?</b> 🔊 <button class="audio" data-say="Do you like coffee?">🔊</button> → <span class="en">Yes, I do.</span> / <span class="en">No, I don't.</span> &nbsp;|&nbsp; <span class="en">My friend likes juice. He doesn't like soda.</span> <button class="audio" data-say="My friend likes juice. He doesn't like soda.">🔊</button></div>
     </div>
 
     <div class="sec cocoa">
-      <h2>🔤 Phonics — os sons dr- e sw-</h2>
+      <h2>🔤 Phonics — o som WH (o H é mudo!)</h2>
+      <p style="color:#6b5542;margin-bottom:8px;">No som <b>wh-</b> a gente <b>não pronuncia o H</b> — ele é <b class="silent">mudo</b>. Ex.: <span class="en">w<span class="silent">h</span>ale</span> soa como "uêil".</p>
       <table id="phonics">
-        <tr><th>Som</th><th>Exemplos</th></tr>
+        <tr><th>Som</th><th>Palavras</th></tr>
       </table>
-      <div class="postit">👂 <b>Repare:</b> <span class="en">draw</span> vira <span class="en">drew</span> e <span class="en">drink</span> vira <span class="en">drank</span> (som <b>dr-</b>); <span class="en">swim</span> vira <span class="en">swam</span> (som <b>sw-</b>).</div>
+      <div class="postit">👂 <b>Lembre:</b> em <span class="en">whale, white, why, where, when, what, whole</span> o <b>H não é pronunciado</b>.</div>
     </div>
 
     <div class="sec gold">
@@ -195,18 +212,18 @@
     </div>
   </div>
 
-  <!-- ============ CONVERSAS (Leitura Guiada) ============ -->
+  <!-- ============ CONVERSAS ============ -->
   <div class="panel" id="tab-leitura">
-    <div class="top"><h1>📖 Conversas no Café</h1><p>Leia os diálogos (🔊 ouça cada fala) e <b>complete</b> clicando na resposta certa. O próximo diálogo abre quando você completar o anterior!</p></div>
+    <div class="top"><h1>📖 Conversas no Café</h1><p>Leia (🔊 ouça cada frase) e <b>complete</b> clicando na resposta certa. O próximo bloco abre quando você completar o anterior!</p></div>
     <div id="dialogs"></div>
 
     <div class="sec gold">
-      <h2>🧭 O que cada diálogo treinou</h2>
+      <h2>🧭 O que cada bloco treinou</h2>
       <table>
-        <tr><th>Tópico</th><th>Diálogo</th></tr>
-        <tr><td>Verbos no passado (rode, swam, drank)</td><td>Diálogo 1</td></tr>
-        <tr><td>Did you...? + drinks (coffee, tea) + respostas curtas</td><td>Diálogo 2</td></tr>
-        <tr><td>Verbos no passado (wrote, drew, made, wore, sang)</td><td>Diálogo 3</td></tr>
+        <tr><th>Tópico</th><th>Bloco</th></tr>
+        <tr><td>Texto de viagem no passado (flew, got up, had, ate, drank, rode, went, bought)</td><td>Bloco 1</td></tr>
+        <tr><td>Did you...? + respostas curtas + drinks</td><td>Bloco 2</td></tr>
+        <tr><td>Phonics WH (H mudo) + frases negativas (didn't)</td><td>Bloco 3</td></tr>
       </table>
     </div>
 
@@ -216,7 +233,7 @@
     </div>
   </div>
 
-  <!-- ============ QUIZ (Pedido Rápido) ============ -->
+  <!-- ============ QUIZ ============ -->
   <div class="panel" id="tab-quiz">
     <div class="top"><h1>🎯 Pedido Rápido</h1><p>10 perguntas. Responda e veja na hora se acertou. Depois aparece o 🔊 para <b>ouvir em inglês</b>.</p></div>
     <div class="hud">
@@ -237,7 +254,7 @@
     </div>
   </div>
 
-  <!-- ============ SIMULADO (O Grande Pedido) ============ -->
+  <!-- ============ SIMULADO ============ -->
   <div class="panel" id="tab-simulado">
     <div class="top"><h1>📝 O Grande Pedido</h1><p>O simulado da prova: 25 perguntas. Responda com calma! O 🔊 aparece depois de cada resposta.</p></div>
     <div class="hud">
@@ -284,7 +301,7 @@
 <div id="modal"><div class="mbox"><p id="modalTxt"></p><div><button class="yes" id="modalYes">Sim</button><button class="no" onclick="closeModal()">Cancelar</button></div></div></div>
 
 <script>
-/* ===== áudio (SpeechSynthesis en-US, rate 1) via delegação (sem problema de aspas) ===== */
+/* ===== áudio (SpeechSynthesis en-US, rate 1) via delegação ===== */
 function speak(t){try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=1;window.speechSynthesis.speak(u);}catch(e){}}
 document.addEventListener('click',function(e){var b=e.target.closest('.audio');if(b&&b.dataset.say){speak(b.dataset.say);}});
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -300,200 +317,225 @@ function showTab(id,btn){
 function showTabTop(id){showTab(id);window.scrollTo({top:0,behavior:'smooth'});}
 
 /* ===== salvamento ===== */
-const SAVE_KEY='kit_ing5_unit6_cafe_v1';
+const SAVE_KEY='kit_ing5_unit6_cafe_v2';
 let mem={quiz:{},sim:{},leitura:{}};
 function load(){try{const r=localStorage.getItem(SAVE_KEY);if(r){const o=JSON.parse(r);if(o){mem=Object.assign({quiz:{},sim:{},leitura:{}},o);}}}catch(e){if(window.__mem)mem=window.__mem;}}
 function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(mem));}catch(e){window.__mem=mem;}mem.__when=new Date().toLocaleString('pt-BR');stamp();}
 function stamp(){document.getElementById('saveInfo').textContent='💾 Salvo automaticamente '+(mem.__when||'');}
 
-/* ===== PRNG semente fixa (mesma ordem toda vez) ===== */
+/* ===== PRNG semente fixa ===== */
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 function shuffle(arr,seed){const rnd=mulberry32(seed);const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-/* ===================== DADOS ===================== */
-/* verbos irregulares: [presente, passado, tradução] */
+/* ===================== DADOS (conteúdo real da Unit 6) ===================== */
 const verbs=[
- ['make','made','fazer'],['write','wrote','escrever'],['draw','drew','desenhar'],
- ['wear','wore','vestir / usar'],['sing','sang','cantar'],['swim','swam','nadar'],
- ['ride','rode','andar (de bike/cavalo)'],['see','saw','ver'],['go','went','ir'],
- ['have','had','ter'],['eat','ate','comer'],['drink','drank','beber'],
- ['take','took','tirar (foto) / pegar'],['buy','bought','comprar'],
- ['do','did','fazer'],['read','read','ler (som muda: /réd/)']
+ ['draw','drew','desenhar'],['make','made','fazer'],['ride','rode','andar (de bike)'],
+ ['sing','sang','cantar'],['see','saw','ver'],['swim','swam','nadar'],
+ ['wear','wore','vestir / usar'],['write','wrote','escrever'],['go','went','ir'],
+ ['get up','got up','levantar'],['have','had','ter / tomar'],['eat','ate','comer'],
+ ['drink','drank','beber'],['fly','flew','voar'],['buy','bought','comprar'],
+ ['read','read','ler (som muda)'],['do','did','fazer']
 ];
-const timeEx=[
- ['yesterday','ontem'],['last night','ontem à noite'],['last week','semana passada'],
- ['last weekend','fim de semana passado'],['last month','mês passado'],
- ['last year','ano passado'],['two days ago','dois dias atrás']
+const phrases=[
+ ['I made a cake for my brother’s birthday.','Eu fiz um bolo para o aniversário do meu irmão.'],
+ ['I wrote a card for my uncle.','Eu escrevi um cartão para meu tio.'],
+ ['I drew a picture.','Eu desenhei um desenho.'],
+ ['I wore my new dress.','Eu vesti meu vestido novo.'],
+ ['I sang “Happy Birthday.”','Eu cantei "Parabéns".'],
+ ['I swam in the pool.','Eu nadei na piscina.'],
+ ['I rode my bike in the yard.','Eu andei de bike no quintal.'],
+ ['I saw a helicopter.','Eu vi um helicóptero.']
 ];
-const drinks=[
- ['water','água'],['milk','leite'],['juice','suco'],['tea','chá'],['coffee','café'],
- ['soda','refrigerante'],['lemonade','limonada'],['hot chocolate','chocolate quente'],['smoothie','vitamina / smoothie']
+const negatives=[
+ ['Yesterday, I didn’t wear a school uniform.','Ontem eu não usei uniforme.'],
+ ['My mom and I didn’t make cookies last week.','Minha mãe e eu não fizemos biscoitos semana passada.'],
+ ['I didn’t draw a picture yesterday.','Eu não desenhei ontem.'],
+ ['We didn’t swim in the river last Sunday.','Nós não nadamos no rio domingo passado.'],
+ ['Last Saturday, I didn’t ride my bike.','Sábado passado eu não andei de bike.']
+];
+const lasts=[
+ ['last week','semana passada'],['last month','mês passado'],['last year','ano passado'],['yesterday','ontem']
+];
+const lastPhrases=[
+ ['Last year, Thomas went to Spain.','Ano passado, o Thomas foi para a Espanha.'],
+ ['Last month, Roberto flew to New York.','Mês passado, o Roberto voou para Nova York.'],
+ ['Last week, he wrote a letter.','Semana passada, ele escreveu uma carta.']
 ];
 const didRows=[
- ['Did you drink juice last week?','Yes, I did.',"No, I didn't."],
- ['Did you swim last weekend?','Yes, I did.',"No, I didn't."],
- ['Did you see a movie yesterday?','Yes, I did.',"No, I didn't."],
- ['Did you ride your bike?','Yes, I did.',"No, I didn't."]
+ ['Did you eat an apple yesterday?','Yes, I did.',"No, I didn't."],
+ ['Did you drink water this morning?','Yes, I did.',"No, I didn't."],
+ ['Did you go to bed at 8 o’clock last night?','Yes, I did.',"No, I didn't."],
+ ['Did you wear a sweater on Monday?','Yes, I did.',"No, I didn't."],
+ ['Did you have breakfast this morning?','Yes, I did.',"No, I didn't."]
+];
+const drinks=[
+ ['tea','chá'],['coffee','café'],['juice','suco'],['water','água'],['hot chocolate','chocolate quente'],['soda','refrigerante']
 ];
 const phonics=[
- ['dr-','drink, draw, dream, dress'],
- ['sw-','swim, sweet, swing']
+ ['wha-','what, whale'],
+ ['whi-','white, why'],
+ ['whe-','when, where'],
+ ['who-','whole']
 ];
 const flash=[
- ['Passado de "swim"?','swam (nadou)'],
- ['Passado de "drink"?','drank (bebeu)'],
- ['"Last week" quer dizer?','semana passada'],
- ['"Tea" em português?','chá'],
- ['Depois de "Did you..." o verbo leva passado?','Não! Volta ao normal: Did you go? (não "went")'],
- ['Como responder SIM no passado?','Yes, I did.'],
- ['Passado de "make"?','made (fez)']
+ ['Passado de "fly"?','flew (voou)'],
+ ['Passado de "buy"?','bought (comprou)'],
+ ['Negativa de "I drew"?','I didn’t draw (didn’t + verbo normal)'],
+ ['"We use ___ to talk about the past."','last (last week / month / year)'],
+ ['Em "whale", o H é...','mudo! A gente não pronuncia o H.'],
+ ['"juice" em português?','suco'],
+ ['Como responder SIM no passado?','Yes, I did.']
 ];
 
-/* diálogos: cada bloco = {titulo, linhas:[[quem,texto]], perguntas:[{qt,opts:[{t,correct,why}]}]} */
+/* diálogos / leitura */
 const dialogs=[
- {titulo:'Diálogo 1 — What did you do last weekend?',
+ {titulo:'Bloco 1 — Reading: A trip (uma viagem no passado)',
   linhas:[
-   ['A:','What did you do last weekend?'],
-   ['B:','I went to the park and I rode my bike. And you?'],
-   ['A:','I swam in the pool and I drank a lot of juice!']
+   ['','Last year I flew to a beautiful city in Brazil.'],
+   ['','On the first day I got up at 8 o’clock and had breakfast at the hotel.'],
+   ['','We ate tapioca and drank orange juice.'],
+   ['','After breakfast, we rode our bikes near the beach.'],
+   ['','In the afternoon we went to the market and I bought a souvenir.']
   ],
   perguntas:[
-   {qt:'Complete: "I ___ my bike." (andei)',opts:[
-     {t:'rode',correct:true,why:'rode é o passado de "ride" (andar de bike).'},
-     {t:'ride',correct:false,why:'"ride" é o presente, sem passado.'},
-     {t:'rided',correct:false,why:'"ride" é irregular: não ganha -ed.'}]},
-   {qt:'Complete: "I ___ in the pool." (nadei)',opts:[
-     {t:'swam',correct:true,why:'swam é o passado de "swim" (nadar).'},
-     {t:'swim',correct:false,why:'"swim" é o presente.'},
-     {t:'swimmed',correct:false,why:'"swim" é irregular: o passado é "swam".'}]},
-   {qt:'Complete: "I ___ a lot of juice." (bebi)',opts:[
-     {t:'drank',correct:true,why:'drank é o passado de "drink" (beber).'},
-     {t:'drinked',correct:false,why:'"drink" é irregular: o passado é "drank".'},
-     {t:'drink',correct:false,why:'"drink" é o presente.'}]}
+   {qt:'Complete: "Last year I ___ to a beautiful city." (voei)',opts:[
+     {t:'flew',correct:true,why:'fly ➜ flew (voar). "Last year" pede passado.'},
+     {t:'fly',correct:false,why:'"fly" é o presente.'},
+     {t:'flyed',correct:false,why:'"fly" é irregular: o passado é "flew".'}]},
+   {qt:'Complete: "I ___ up at 8 o’clock." (levantei)',opts:[
+     {t:'got',correct:true,why:'get up ➜ got up (levantar).'},
+     {t:'get',correct:false,why:'"get" é o presente.'},
+     {t:'getted',correct:false,why:'é irregular: o passado é "got".'}]},
+   {qt:'Complete: "I ___ a souvenir." (comprei)',opts:[
+     {t:'bought',correct:true,why:'buy ➜ bought (comprar).'},
+     {t:'buyed',correct:false,why:'é irregular: o passado é "bought".'},
+     {t:'buy',correct:false,why:'"buy" é o presente.'}]}
   ]},
- {titulo:'Diálogo 2 — At the café',
+ {titulo:'Bloco 2 — Did you...? + drinks',
   linhas:[
-   ['A:','Did you drink coffee yesterday?'],
-   ['B:',"No, I didn't. I drank tea. Did you?"],
-   ['A:','Yes, I did. I had coffee and I ate a cake.']
+   ['A:','Did you drink water this morning?'],
+   ['B:','Yes, I did. Did you drink coffee?'],
+   ['A:',"No, I didn’t. I drank hot chocolate. Do you like tea?"],
+   ['B:','Yes, I do!']
   ],
   perguntas:[
-   {qt:'Complete: "Did you ___ coffee yesterday?"',opts:[
+   {qt:'Complete: "Did you ___ water this morning?"',opts:[
      {t:'drink',correct:true,why:'Depois de "Did" o verbo fica normal: drink.'},
      {t:'drank',correct:false,why:'Depois de "Did" NÃO se usa o passado.'},
      {t:'drinked',correct:false,why:'Essa forma não existe.'}]},
-   {qt:'Complete a resposta: "No, I ___."',opts:[
-     {t:"didn't",correct:true,why:"No, I didn't = Não (no passado)."},
+   {qt:'Resposta curta para NÃO (passado): "No, I ___."',opts:[
+     {t:"didn't",correct:true,why:"No, I didn't = Não (passado)."},
      {t:"don't",correct:false,why:'"don\'t" é presente; no passado é "didn\'t".'},
-     {t:"wasn't",correct:false,why:'"wasn\'t" é do verbo to be, não combina aqui.'}]},
-   {qt:'Complete: "I ___ a cake." (comi)',opts:[
-     {t:'ate',correct:true,why:'ate é o passado de "eat" (comer).'},
-     {t:'eat',correct:false,why:'"eat" é o presente.'},
-     {t:'eated',correct:false,why:'"eat" é irregular: o passado é "ate".'}]}
+     {t:"amn't",correct:false,why:'essa forma não existe.'}]},
+   {qt:'"Do you like tea?" — resposta SIM:',opts:[
+     {t:'Yes, I do.',correct:true,why:'Com "Do you like...?" a resposta é "Yes, I do." / "No, I don’t."'},
+     {t:'Yes, I did.',correct:false,why:'"did" é do passado; aqui a pergunta é no presente (Do you like).'},
+     {t:'Yes, I am.',correct:false,why:'essa é do verbo to be.'}]}
   ]},
- {titulo:'Diálogo 3 — Last week',
+ {titulo:'Bloco 3 — Phonics WH + negativa (didn’t)',
   linhas:[
-   ['A:','What did you do last week?'],
-   ['B:','I wrote a letter and I drew a picture. I also sang a song!'],
-   ['A:','Wow! I made a cake and I wore my new shoes.']
+   ['','The white whale swims in the ocean.'],
+   ['','Where does it live? When does it eat?'],
+   ['','Why is it white? What a beautiful whale!'],
+   ['','Yesterday I didn’t see the whale. I didn’t swim in the sea.']
   ],
   perguntas:[
-   {qt:'Complete: "I ___ a letter." (escrevi)',opts:[
-     {t:'wrote',correct:true,why:'wrote é o passado de "write" (escrever).'},
-     {t:'write',correct:false,why:'"write" é o presente.'},
-     {t:'writed',correct:false,why:'"write" é irregular: o passado é "wrote".'}]},
-   {qt:'Complete: "I ___ a picture." (desenhei)',opts:[
-     {t:'drew',correct:true,why:'drew é o passado de "draw" (desenhar).'},
-     {t:'drawed',correct:false,why:'"draw" é irregular: o passado é "drew".'},
-     {t:'draw',correct:false,why:'"draw" é o presente.'}]},
-   {qt:'Complete: "I ___ my new shoes." (vesti/usei)',opts:[
-     {t:'wore',correct:true,why:'wore é o passado de "wear" (vestir/usar).'},
-     {t:'wear',correct:false,why:'"wear" é o presente.'},
-     {t:'weared',correct:false,why:'"wear" é irregular: o passado é "wore".'}]}
+   {qt:'Na palavra "whale", a letra H é...',opts:[
+     {t:'muda (não se pronuncia)',correct:true,why:'No som wh- o H é mudo: "whale" soa "uêil".'},
+     {t:'pronunciada forte',correct:false,why:'No som wh- o H não é pronunciado.'},
+     {t:'igual ao som de F',correct:false,why:'Não; o H simplesmente fica mudo.'}]},
+   {qt:'Qual palavra tem o som "wh-"?',opts:[
+     {t:'where',correct:true,why:'where começa com wh- (H mudo).'},
+     {t:'water',correct:false,why:'water começa só com w-.'},
+     {t:'ride',correct:false,why:'ride começa com r-.'}]},
+   {qt:'Complete a negativa: "Yesterday I ___ the whale." (não vi)',opts:[
+     {t:"didn't see",correct:true,why:'didn’t + verbo normal (see). Não se usa "saw" depois de didn’t.'},
+     {t:"didn't saw",correct:false,why:'depois de didn’t o verbo fica normal: see.'},
+     {t:"don't see",correct:false,why:'"don’t" é presente; "yesterday" é passado.'}]}
   ]}
 ];
 
-/* quiz: 10 perguntas. correct guardado pelo conteúdo, nunca pela posição. */
+/* quiz: 10 */
 const quizQ=[
  {q:'Qual é o passado de "make"?',audio:'made',opts:[
    {t:'made',correct:true,why:'make ➜ made (fazer). É irregular.'},
    {t:'maked',correct:false,why:'"make" é irregular: não ganha -ed.'},
    {t:'makes',correct:false,why:'"makes" é presente.'},
-   {t:'making',correct:false,why:'"making" é a ação acontecendo agora.'}]},
- {q:'Qual é o passado de "swim"?',audio:'swam',opts:[
-   {t:'swam',correct:true,why:'swim ➜ swam (nadar).'},
-   {t:'swimmed',correct:false,why:'"swim" é irregular: o passado é "swam".'},
-   {t:'swims',correct:false,why:'"swims" é presente.'},
-   {t:'swimming',correct:false,why:'é a ação acontecendo agora.'}]},
- {q:'Qual é o passado de "drink"?',audio:'drank',opts:[
-   {t:'drank',correct:true,why:'drink ➜ drank (beber).'},
-   {t:'drinked',correct:false,why:'"drink" é irregular: o passado é "drank".'},
-   {t:'drinks',correct:false,why:'"drinks" é presente.'},
-   {t:'drinking',correct:false,why:'é a ação acontecendo agora.'}]},
- {q:'Complete: "I ___ a picture yesterday." (desenhei)',audio:'I drew a picture yesterday',opts:[
-   {t:'drew',correct:true,why:'draw ➜ drew (desenhar). "yesterday" pede passado.'},
-   {t:'drawed',correct:false,why:'"draw" é irregular: o passado é "drew".'},
-   {t:'draw',correct:false,why:'falta o passado; "yesterday" é ontem.'},
-   {t:'drawing',correct:false,why:'é a ação acontecendo agora.'}]},
- {q:'"Juice" em português é...',audio:'juice',opts:[
+   {t:'making',correct:false,why:'é a ação acontecendo agora.'}]},
+ {q:'Qual é o passado de "fly"?',audio:'flew',opts:[
+   {t:'flew',correct:true,why:'fly ➜ flew (voar).'},
+   {t:'flyed',correct:false,why:'é irregular: o passado é "flew".'},
+   {t:'flys',correct:false,why:'presente (e o certo seria "flies").'},
+   {t:'flying',correct:false,why:'é a ação acontecendo agora.'}]},
+ {q:'Qual é o passado de "buy"?',audio:'bought',opts:[
+   {t:'bought',correct:true,why:'buy ➜ bought (comprar).'},
+   {t:'buyed',correct:false,why:'é irregular: o passado é "bought".'},
+   {t:'buys',correct:false,why:'presente.'},
+   {t:'buying',correct:false,why:'ação agora.'}]},
+ {q:'Complete: "I ___ my new dress." (vesti)',audio:'I wore my new dress',opts:[
+   {t:'wore',correct:true,why:'wear ➜ wore (vestir/usar).'},
+   {t:'weared',correct:false,why:'é irregular: o passado é "wore".'},
+   {t:'wear',correct:false,why:'"wear" é o presente.'},
+   {t:'wearing',correct:false,why:'ação agora.'}]},
+ {q:'Negativa — complete: "I ___ a picture yesterday." (não desenhei)',audio:"I didn't draw a picture yesterday",opts:[
+   {t:"didn't draw",correct:true,why:'didn’t + verbo normal (draw). Não se usa "drew" depois de didn’t.'},
+   {t:"didn't drew",correct:false,why:'depois de didn’t o verbo fica normal: draw.'},
+   {t:"don't draw",correct:false,why:'"don’t" é presente; "yesterday" é passado.'},
+   {t:"not draw",correct:false,why:'falta o "didn’t".'}]},
+ {q:'Complete: "We use ___ to talk about the past."',audio:'We use last to talk about the past',opts:[
+   {t:'last',correct:true,why:'Usamos "last" para o passado: last week/month/year.'},
+   {t:'next',correct:false,why:'"next" é para o futuro.'},
+   {t:'now',correct:false,why:'"now" é agora (presente).'},
+   {t:'tomorrow',correct:false,why:'"tomorrow" é amanhã (futuro).'}]},
+ {q:'"juice" em português é...',audio:'juice',opts:[
    {t:'suco',correct:true,why:'juice = suco.'},
    {t:'água',correct:false,why:'água = water.'},
-   {t:'leite',correct:false,why:'leite = milk.'},
-   {t:'chá',correct:false,why:'chá = tea.'}]},
- {q:'"Chá" em inglês é...',audio:'tea',opts:[
-   {t:'tea',correct:true,why:'chá = tea.'},
-   {t:'coffee',correct:false,why:'coffee = café.'},
-   {t:'milk',correct:false,why:'milk = leite.'},
-   {t:'soda',correct:false,why:'soda = refrigerante.'}]},
- {q:'"Last week" quer dizer...',audio:'last week',opts:[
-   {t:'semana passada',correct:true,why:'last week = semana passada (é passado!).'},
-   {t:'semana que vem',correct:false,why:'semana que vem = next week.'},
-   {t:'ontem',correct:false,why:'ontem = yesterday.'},
-   {t:'mês passado',correct:false,why:'mês passado = last month.'}]},
- {q:'Como se pergunta "Você nadou ontem?" no passado?',audio:'Did you swim yesterday?',opts:[
-   {t:'Did you swim yesterday?',correct:true,why:'Depois de "Did" o verbo fica normal: swim.'},
-   {t:'Did you swam yesterday?',correct:false,why:'Depois de "Did" NÃO se usa o passado.'},
-   {t:'Do you swim yesterday?',correct:false,why:'"Do" é presente, não combina com "yesterday".'},
-   {t:'You swim yesterday?',correct:false,why:'falta o "Did" para mostrar passado.'}]},
- {q:'Qual é a resposta curta para SIM (no passado)?',audio:'Yes, I did',opts:[
-   {t:'Yes, I did.',correct:true,why:'Yes, I did. = Sim (no passado).'},
+   {t:'chá',correct:false,why:'chá = tea.'},
+   {t:'café',correct:false,why:'café = coffee.'}]},
+ {q:'"Did you drink water this morning?" — resposta SIM:',audio:'Yes, I did',opts:[
+   {t:'Yes, I did.',correct:true,why:'Resposta curta de passado usa "did".'},
    {t:'Yes, I do.',correct:false,why:'"do" é presente; no passado é "did".'},
-   {t:'Yes, I am.',correct:false,why:'essa é do verbo to be.'},
-   {t:'Yes, I was.',correct:false,why:'"was" é to be no passado, não combina aqui.'}]},
- {q:'Qual palavra começa com o som "dr-" (phonics)?',audio:'drink',opts:[
-   {t:'drink',correct:true,why:'drink começa com dr-.'},
-   {t:'swim',correct:false,why:'swim começa com sw-.'},
-   {t:'milk',correct:false,why:'milk começa com o som m-.'},
-   {t:'tea',correct:false,why:'tea começa com o som t-.'}]}
+   {t:'Yes, I drank.',correct:false,why:'a resposta curta é só "Yes, I did."'},
+   {t:'Yes, I am.',correct:false,why:'essa é do verbo to be.'}]},
+ {q:'Phonics: na palavra "whale", a letra H...',audio:'whale',opts:[
+   {t:'é muda (não se pronuncia)',correct:true,why:'No som wh- o H é mudo.'},
+   {t:'é pronunciada forte',correct:false,why:'No som wh- o H não é pronunciado.'},
+   {t:'vira som de F',correct:false,why:'Não; o H fica mudo.'},
+   {t:'vira som de J',correct:false,why:'Não; o H fica mudo.'}]},
+ {q:'Qual palavra tem o som "wh-"?',audio:'where',opts:[
+   {t:'where',correct:true,why:'where começa com wh- (H mudo).'},
+   {t:'water',correct:false,why:'water começa só com w-.'},
+   {t:'ride',correct:false,why:'ride começa com r-.'},
+   {t:'juice',correct:false,why:'juice começa com j-.'}]}
 ];
 
-/* simulado: 25 perguntas (sem indicar nível) */
+/* simulado: 25 */
 const simQ=[
- {q:'Qual é o passado de "go"?',audio:'went',opts:[{t:'went',correct:true,why:'go ➜ went (ir).'},{t:'goed',correct:false,why:'"go" é irregular: o passado é "went".'},{t:'goes',correct:false,why:'presente.'},{t:'going',correct:false,why:'ação agora.'}]},
- {q:'Qual é o passado de "eat"?',audio:'ate',opts:[{t:'ate',correct:true,why:'eat ➜ ate (comer).'},{t:'eated',correct:false,why:'irregular: o passado é "ate".'},{t:'eats',correct:false,why:'presente.'},{t:'eating',correct:false,why:'ação agora.'}]},
- {q:'Qual é o passado de "see"?',audio:'saw',opts:[{t:'saw',correct:true,why:'see ➜ saw (ver).'},{t:'seed',correct:false,why:'irregular: o passado é "saw".'},{t:'sees',correct:false,why:'presente.'},{t:'seeing',correct:false,why:'ação agora.'}]},
- {q:'Qual é o passado de "have"?',audio:'had',opts:[{t:'had',correct:true,why:'have ➜ had (ter).'},{t:'haved',correct:false,why:'irregular: o passado é "had".'},{t:'has',correct:false,why:'presente.'},{t:'having',correct:false,why:'ação agora.'}]},
- {q:'"Water" em português é...',audio:'water',opts:[{t:'água',correct:true,why:'water = água.'},{t:'leite',correct:false,why:'leite = milk.'},{t:'suco',correct:false,why:'suco = juice.'},{t:'café',correct:false,why:'café = coffee.'}]},
- {q:'"Milk" em português é...',audio:'milk',opts:[{t:'leite',correct:true,why:'milk = leite.'},{t:'água',correct:false,why:'água = water.'},{t:'chá',correct:false,why:'chá = tea.'},{t:'refrigerante',correct:false,why:'refrigerante = soda.'}]},
- {q:'"Coffee" em português é...',audio:'coffee',opts:[{t:'café',correct:true,why:'coffee = café.'},{t:'chá',correct:false,why:'chá = tea.'},{t:'suco',correct:false,why:'suco = juice.'},{t:'leite',correct:false,why:'leite = milk.'}]},
- {q:'"Yesterday" quer dizer...',audio:'yesterday',opts:[{t:'ontem',correct:true,why:'yesterday = ontem (passado).'},{t:'hoje',correct:false,why:'hoje = today.'},{t:'amanhã',correct:false,why:'amanhã = tomorrow.'},{t:'agora',correct:false,why:'agora = now.'}]},
- {q:'Qual é o passado de "ride"?',audio:'rode',opts:[{t:'rode',correct:true,why:'ride ➜ rode (andar de bike).'},{t:'rided',correct:false,why:'irregular: o passado é "rode".'},{t:'rides',correct:false,why:'presente.'},{t:'riding',correct:false,why:'ação agora.'}]},
- {q:'Qual é o passado de "sing"?',audio:'sang',opts:[{t:'sang',correct:true,why:'sing ➜ sang (cantar).'},{t:'singed',correct:false,why:'irregular: o passado é "sang".'},{t:'sings',correct:false,why:'presente.'},{t:'singing',correct:false,why:'ação agora.'}]},
- {q:'Complete: "I ___ a song at the party." (cantei)',audio:'I sang a song at the party',opts:[{t:'sang',correct:true,why:'sing ➜ sang.'},{t:'singed',correct:false,why:'o passado é "sang".'},{t:'sing',correct:false,why:'falta o passado.'},{t:'sings',correct:false,why:'presente.'}]},
- {q:'Complete: "She ___ a letter to her friend." (escreveu)',audio:'She wrote a letter to her friend',opts:[{t:'wrote',correct:true,why:'write ➜ wrote.'},{t:'writed',correct:false,why:'o passado é "wrote".'},{t:'writes',correct:false,why:'presente.'},{t:'writing',correct:false,why:'ação agora.'}]},
- {q:'Complete: "We ___ in the sea last summer." (nadamos)',audio:'We swam in the sea last summer',opts:[{t:'swam',correct:true,why:'swim ➜ swam. "last summer" é passado.'},{t:'swimmed',correct:false,why:'o passado é "swam".'},{t:'swims',correct:false,why:'presente.'},{t:'swim',correct:false,why:'falta o passado.'}]},
- {q:'Complete: "Did you ___ milk this morning?"',audio:'Did you drink milk this morning?',opts:[{t:'drink',correct:true,why:'depois de "Did" o verbo fica normal: drink.'},{t:'drank',correct:false,why:'depois de "Did" NÃO se usa o passado.'},{t:'drinked',correct:false,why:'essa forma não existe.'},{t:'drinks',correct:false,why:'não se usa -s depois de "Did".'}]},
- {q:'Complete: "He ___ his new shirt." (vestiu)',audio:'He wore his new shirt',opts:[{t:'wore',correct:true,why:'wear ➜ wore (vestir).'},{t:'weared',correct:false,why:'o passado é "wore".'},{t:'wears',correct:false,why:'presente.'},{t:'wearing',correct:false,why:'ação agora.'}]},
- {q:'"Last year" quer dizer...',audio:'last year',opts:[{t:'ano passado',correct:true,why:'last year = ano passado.'},{t:'ano que vem',correct:false,why:'ano que vem = next year.'},{t:'semana passada',correct:false,why:'= last week.'},{t:'mês passado',correct:false,why:'= last month.'}]},
- {q:'Resposta curta para NÃO (no passado)?',audio:"No, I didn't",opts:[{t:"No, I didn't.",correct:true,why:"No, I didn't. = Não (passado)."},{t:"No, I don't.",correct:false,why:'"don\'t" é presente.'},{t:"No, I'm not.",correct:false,why:'essa é do verbo to be.'},{t:"No, I wasn't.",correct:false,why:'"wasn\'t" é to be no passado.'}]},
- {q:'Complete: "I ___ a cake for my mom." (fiz)',audio:'I made a cake for my mom',opts:[{t:'made',correct:true,why:'make ➜ made (fazer).'},{t:'maked',correct:false,why:'o passado é "made".'},{t:'makes',correct:false,why:'presente.'},{t:'making',correct:false,why:'ação agora.'}]},
- {q:'Complete: "They ___ pictures in art class." (desenharam)',audio:'They drew pictures in art class',opts:[{t:'drew',correct:true,why:'draw ➜ drew (desenhar).'},{t:'drawed',correct:false,why:'o passado é "drew".'},{t:'draws',correct:false,why:'presente.'},{t:'drawing',correct:false,why:'ação agora.'}]},
- {q:'Qual destas é uma bebida (a drink)?',audio:'tea',opts:[{t:'tea',correct:true,why:'tea (chá) é uma bebida.'},{t:'apple',correct:false,why:'apple = maçã (fruta).'},{t:'book',correct:false,why:'book = livro.'},{t:'bike',correct:false,why:'bike = bicicleta.'}]},
- {q:'Complete: "___ you see the movie last night?"',audio:'Did you see the movie last night?',opts:[{t:'Did',correct:true,why:'"Did" começa a pergunta no passado.'},{t:'Do',correct:false,why:'"Do" é presente; "last night" é passado.'},{t:'Are',correct:false,why:'"Are" é do verbo to be.'},{t:'Was',correct:false,why:'"Was" não combina com "you see".'}]},
- {q:'"Two days ago" quer dizer...',audio:'two days ago',opts:[{t:'dois dias atrás',correct:true,why:'ago = atrás. two days ago = dois dias atrás.'},{t:'daqui a dois dias',correct:false,why:'isso seria "in two days".'},{t:'todo dia',correct:false,why:'todo dia = every day.'},{t:'duas vezes',correct:false,why:'duas vezes = twice.'}]},
- {q:'Qual palavra começa com o som "sw-" (phonics)?',audio:'swim',opts:[{t:'swim',correct:true,why:'swim começa com sw-.'},{t:'draw',correct:false,why:'draw começa com dr-.'},{t:'milk',correct:false,why:'milk começa com m-.'},{t:'sing',correct:false,why:'sing começa com s- (não sw-).'}]},
- {q:'Complete: "I ___ my bike to school." (andei)',audio:'I rode my bike to school',opts:[{t:'rode',correct:true,why:'ride ➜ rode.'},{t:'rided',correct:false,why:'o passado é "rode".'},{t:'rides',correct:false,why:'presente.'},{t:'riding',correct:false,why:'ação agora.'}]},
- {q:'"Did you drink tea?" — resposta certa para SIM:',audio:'Yes, I did',opts:[{t:'Yes, I did.',correct:true,why:'a resposta curta de passado usa "did".'},{t:'Yes, I drank.',correct:false,why:'a resposta curta é só "Yes, I did."'},{t:'Yes, I drink.',correct:false,why:'"drink" é presente.'},{t:'Yes, I do.',correct:false,why:'"do" é presente; no passado é "did".'}]}
+ {q:'Qual é o passado de "go"?',audio:'went',opts:[{t:'went',correct:true,why:'go ➜ went (ir).'},{t:'goed',correct:false,why:'irregular: o passado é "went".'},{t:'goes',correct:false,why:'presente.'},{t:'going',correct:false,why:'ação agora.'}]},
+ {q:'Qual é o passado de "eat"?',audio:'ate',opts:[{t:'ate',correct:true,why:'eat ➜ ate (comer).'},{t:'eated',correct:false,why:'o passado é "ate".'},{t:'eats',correct:false,why:'presente.'},{t:'eating',correct:false,why:'ação agora.'}]},
+ {q:'Qual é o passado de "see"?',audio:'saw',opts:[{t:'saw',correct:true,why:'see ➜ saw (ver).'},{t:'seed',correct:false,why:'o passado é "saw".'},{t:'sees',correct:false,why:'presente.'},{t:'seeing',correct:false,why:'ação agora.'}]},
+ {q:'Qual é o passado de "drink"?',audio:'drank',opts:[{t:'drank',correct:true,why:'drink ➜ drank (beber).'},{t:'drinked',correct:false,why:'o passado é "drank".'},{t:'drinks',correct:false,why:'presente.'},{t:'drinking',correct:false,why:'ação agora.'}]},
+ {q:'Qual é o passado de "have"?',audio:'had',opts:[{t:'had',correct:true,why:'have ➜ had (ter/tomar).'},{t:'haved',correct:false,why:'o passado é "had".'},{t:'has',correct:false,why:'presente.'},{t:'having',correct:false,why:'ação agora.'}]},
+ {q:'Qual é o passado de "write"?',audio:'wrote',opts:[{t:'wrote',correct:true,why:'write ➜ wrote (escrever).'},{t:'writed',correct:false,why:'o passado é "wrote".'},{t:'writes',correct:false,why:'presente.'},{t:'writing',correct:false,why:'ação agora.'}]},
+ {q:'Qual é o passado de "swim"?',audio:'swam',opts:[{t:'swam',correct:true,why:'swim ➜ swam (nadar).'},{t:'swimmed',correct:false,why:'o passado é "swam".'},{t:'swims',correct:false,why:'presente.'},{t:'swimming',correct:false,why:'ação agora.'}]},
+ {q:'Qual é o passado de "ride"?',audio:'rode',opts:[{t:'rode',correct:true,why:'ride ➜ rode (andar de bike).'},{t:'rided',correct:false,why:'o passado é "rode".'},{t:'rides',correct:false,why:'presente.'},{t:'riding',correct:false,why:'ação agora.'}]},
+ {q:'Complete: "Last year, Thomas ___ to Spain." (foi)',audio:'Last year, Thomas went to Spain',opts:[{t:'went',correct:true,why:'go ➜ went. "Last year" pede passado.'},{t:'goed',correct:false,why:'o passado é "went".'},{t:'goes',correct:false,why:'presente.'},{t:'go',correct:false,why:'falta o passado.'}]},
+ {q:'Complete: "Last month, Roberto ___ to New York." (voou)',audio:'Last month, Roberto flew to New York',opts:[{t:'flew',correct:true,why:'fly ➜ flew (voar).'},{t:'flyed',correct:false,why:'o passado é "flew".'},{t:'flies',correct:false,why:'presente.'},{t:'flying',correct:false,why:'ação agora.'}]},
+ {q:'Complete: "I ___ a cake for my brother." (fiz)',audio:'I made a cake for my brother',opts:[{t:'made',correct:true,why:'make ➜ made.'},{t:'maked',correct:false,why:'o passado é "made".'},{t:'makes',correct:false,why:'presente.'},{t:'making',correct:false,why:'ação agora.'}]},
+ {q:'Complete: "I ___ “Happy Birthday.”" (cantei)',audio:'I sang Happy Birthday',opts:[{t:'sang',correct:true,why:'sing ➜ sang (cantar).'},{t:'singed',correct:false,why:'o passado é "sang".'},{t:'sings',correct:false,why:'presente.'},{t:'singing',correct:false,why:'ação agora.'}]},
+ {q:'Negativa — complete: "We ___ in the river last Sunday." (não nadamos)',audio:"We didn't swim in the river last Sunday",opts:[{t:"didn't swim",correct:true,why:'didn’t + verbo normal (swim).'},{t:"didn't swam",correct:false,why:'depois de didn’t o verbo fica normal: swim.'},{t:"don't swim",correct:false,why:'"don’t" é presente; "last Sunday" é passado.'},{t:"not swim",correct:false,why:'falta o "didn’t".'}]},
+ {q:'Negativa — complete: "Yesterday, I ___ a school uniform." (não usei)',audio:"Yesterday, I didn't wear a school uniform",opts:[{t:"didn't wear",correct:true,why:'didn’t + verbo normal (wear).'},{t:"didn't wore",correct:false,why:'depois de didn’t o verbo fica normal: wear.'},{t:"don't wear",correct:false,why:'presente; "yesterday" é passado.'},{t:"wasn't wear",correct:false,why:'"wasn’t" é do verbo to be.'}]},
+ {q:'Complete: "We use ___ to talk about the past."',audio:'We use last to talk about the past',opts:[{t:'last',correct:true,why:'Usamos "last" para o passado.'},{t:'next',correct:false,why:'"next" é futuro.'},{t:'now',correct:false,why:'presente.'},{t:'soon',correct:false,why:'futuro próximo.'}]},
+ {q:'"last week" quer dizer...',audio:'last week',opts:[{t:'semana passada',correct:true,why:'last week = semana passada.'},{t:'semana que vem',correct:false,why:'= next week.'},{t:'toda semana',correct:false,why:'= every week.'},{t:'esta semana',correct:false,why:'= this week.'}]},
+ {q:'Complete: "Did you ___ an apple yesterday?"',audio:'Did you eat an apple yesterday?',opts:[{t:'eat',correct:true,why:'depois de "Did" o verbo fica normal: eat.'},{t:'ate',correct:false,why:'depois de "Did" NÃO se usa o passado.'},{t:'eaten',correct:false,why:'não se usa aqui.'},{t:'eats',correct:false,why:'não se usa -s depois de "Did".'}]},
+ {q:'Resposta curta para NÃO (passado)?',audio:"No, I didn't",opts:[{t:"No, I didn't.",correct:true,why:"No, I didn't. = Não (passado)."},{t:"No, I don't.",correct:false,why:'"don’t" é presente.'},{t:"No, I'm not.",correct:false,why:'essa é do verbo to be.'},{t:"No, I wasn't.",correct:false,why:'"wasn’t" é to be no passado.'}]},
+ {q:'"coffee" em português é...',audio:'coffee',opts:[{t:'café',correct:true,why:'coffee = café.'},{t:'chá',correct:false,why:'chá = tea.'},{t:'suco',correct:false,why:'suco = juice.'},{t:'água',correct:false,why:'água = water.'}]},
+ {q:'"hot chocolate" em português é...',audio:'hot chocolate',opts:[{t:'chocolate quente',correct:true,why:'hot chocolate = chocolate quente.'},{t:'refrigerante',correct:false,why:'refrigerante = soda.'},{t:'chá gelado',correct:false,why:'não; isso seria iced tea.'},{t:'leite',correct:false,why:'leite = milk.'}]},
+ {q:'"Do you like coffee?" — resposta certa:',audio:'Yes, I do',opts:[{t:'Yes, I do.',correct:true,why:'Com "Do you like...?" responde-se "Yes, I do." / "No, I don’t."'},{t:'Yes, I did.',correct:false,why:'"did" é passado; a pergunta é no presente.'},{t:'Yes, I am.',correct:false,why:'essa é do verbo to be.'},{t:'Yes, I like.',correct:false,why:'a resposta curta é "Yes, I do."'}]},
+ {q:'Phonics: em "white", a letra H...',audio:'white',opts:[{t:'é muda',correct:true,why:'No som wh- o H é mudo.'},{t:'é pronunciada',correct:false,why:'No som wh- o H não é pronunciado.'},{t:'vira som de F',correct:false,why:'Não; o H fica mudo.'},{t:'vira som de T',correct:false,why:'Não; o H fica mudo.'}]},
+ {q:'Qual palavra tem o som "wh-"?',audio:'when',opts:[{t:'when',correct:true,why:'when começa com wh- (H mudo).'},{t:'water',correct:false,why:'só w-.'},{t:'wrote',correct:false,why:'começa com wr-.'},{t:'yard',correct:false,why:'começa com y-.'}]},
+ {q:'Complete o texto: "I ___ breakfast at the hotel." (tomei)',audio:'I had breakfast at the hotel',opts:[{t:'had',correct:true,why:'have ➜ had. "have breakfast" = tomar café da manhã.'},{t:'haved',correct:false,why:'o passado é "had".'},{t:'has',correct:false,why:'presente.'},{t:'having',correct:false,why:'ação agora.'}]},
+ {q:'Complete: "We ___ our bikes near the beach." (andamos)',audio:'We rode our bikes near the beach',opts:[{t:'rode',correct:true,why:'ride ➜ rode.'},{t:'rided',correct:false,why:'o passado é "rode".'},{t:'rides',correct:false,why:'presente.'},{t:'riding',correct:false,why:'ação agora.'}]}
 ];
 
 /* ===================== RENDER CARDÁPIO ===================== */
@@ -504,31 +546,37 @@ const simQ=[
     d.innerHTML='<div class="w">'+p+aud(p)+'</div><div class="pastw">➜ <b>'+pa+'</b>'+aud(pa)+'</div><div class="tr">'+tr+'</div>';
     vc.appendChild(d);
   });
-  const tc=document.getElementById('time');
-  timeEx.forEach(([w,tr])=>{const d=document.createElement('div');d.className='word';d.innerHTML='<div class="w">'+w+aud(w)+'</div><div class="tr">'+tr+'</div>';tc.appendChild(d);});
-  const dc=document.getElementById('drinks');
-  drinks.forEach(([w,tr])=>{const d=document.createElement('div');d.className='word';d.innerHTML='<div class="w">'+w+aud(w)+'</div><div class="tr">'+tr+'</div>';dc.appendChild(d);});
+  const pc=document.getElementById('phrases');
+  phrases.forEach(([en,tr])=>{const d=document.createElement('div');d.className='phr';d.innerHTML='<span class="en">'+en+'</span>'+aud(en)+'<div class="tr">'+tr+'</div>';pc.appendChild(d);});
+  const nc=document.getElementById('negatives');
+  negatives.forEach(([en,tr])=>{const d=document.createElement('div');d.className='phr';d.innerHTML='<span class="en">'+en+'</span>'+aud(en)+'<div class="tr">'+tr+'</div>';nc.appendChild(d);});
+  const lc=document.getElementById('lasts');
+  lasts.forEach(([w,tr])=>{const d=document.createElement('div');d.className='word';d.innerHTML='<div class="w">'+w+aud(w)+'</div><div class="tr">'+tr+'</div>';lc.appendChild(d);});
+  const lp=document.getElementById('lastPhrases');
+  lastPhrases.forEach(([en,tr])=>{const d=document.createElement('div');d.className='phr';d.innerHTML='<span class="en">'+en+'</span>'+aud(en)+'<div class="tr">'+tr+'</div>';lp.appendChild(d);});
   const dt=document.getElementById('didtable');
   didRows.forEach(([q,y,n])=>{const tr=document.createElement('tr');tr.innerHTML='<td><span class="en">'+q+'</span>'+aud(q)+'</td><td><span class="en">'+y+'</span>'+aud(y)+'</td><td><span class="en">'+n+'</span>'+aud(n)+'</td>';dt.appendChild(tr);});
+  const dc=document.getElementById('drinks');
+  drinks.forEach(([w,tr])=>{const d=document.createElement('div');d.className='word';d.innerHTML='<div class="w">'+w+aud(w)+'</div><div class="tr">'+tr+'</div>';dc.appendChild(d);});
   const ph=document.getElementById('phonics');
   phonics.forEach(([s,ex])=>{const tr=document.createElement('tr');tr.innerHTML='<td><b>'+s+'</b></td><td><span class="en">'+ex+'</span>'+aud(ex)+'</td>';ph.appendChild(tr);});
   const fl=document.getElementById('flash');
   flash.forEach(([q,a])=>{const d=document.createElement('div');d.className='flashq';d.innerHTML='<b>❔ '+q+'</b><div class="ans">✅ '+a+'</div>';d.onclick=()=>d.classList.toggle('open');fl.appendChild(d);});
 })();
 
-/* ===================== RENDER CONVERSAS (leitura) ===================== */
+/* ===================== RENDER CONVERSAS ===================== */
 const dprep=dialogs.map((d,di)=>({titulo:d.titulo,linhas:d.linhas,perguntas:d.perguntas.map((p,pi)=>({qt:p.qt,opts:shuffle(p.opts,500+di*10+pi)}))}));
 (function(){
   const cont=document.getElementById('dialogs');
   dprep.forEach((d,di)=>{
     const b=document.createElement('div');b.className='block'+(di>0?' locked':'');b.id='block'+di;
     let html='<h3>'+d.titulo+'</h3>';
-    d.linhas.forEach(l=>{html+='<div class="line"><span class="who">'+l[0]+'</span><span class="en">'+l[1]+'</span>'+aud(l[1])+'</div>';});
+    d.linhas.forEach(l=>{html+='<div class="line">'+(l[0]?'<span class="who">'+l[0]+'</span>':'')+'<span class="en">'+l[1]+'</span>'+aud(l[1])+'</div>';});
     d.perguntas.forEach((p,pi)=>{
       let opts='';p.opts.forEach((o,oi)=>{opts+='<button class="opt" onclick="ansLeitura('+di+','+pi+','+oi+',this)">'+o.t+'</button>';});
       html+='<div class="q"><div class="qt">✏️ '+p.qt+'</div>'+opts+'<div class="fb" id="lfb'+di+'_'+pi+'"></div></div>';
     });
-    if(di>0)html+='<div class="lockmsg">🔒 Complete o diálogo anterior para abrir este.</div>';
+    if(di>0)html+='<div class="lockmsg">🔒 Complete o bloco anterior para abrir este.</div>';
     b.innerHTML=html;cont.appendChild(b);
   });
 })();
@@ -638,7 +686,7 @@ function openReport(){
   let lc=0;dprep.forEach((d,di)=>{if(blockDone(di))lc++;});
   document.getElementById('rQuiz').textContent=qh+' / '+qt+' acertos';
   document.getElementById('rSim').textContent=sh+' / '+st+' acertos';
-  document.getElementById('rLeitura').textContent=lc+' / '+dprep.length+' diálogos';
+  document.getElementById('rLeitura').textContent=lc+' / '+dprep.length+' blocos';
   document.getElementById('rWhen').textContent=mem.__when||'ainda não usado';
   document.getElementById('report').classList.add('on');
 }
